@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Derek Johnson — TELUS MBA Application · Cohort 7</title>
+<link rel="stylesheet" href="style.css">
+<style>
+  :root { --purple-dark: #3A1D55; --green-dark: #2b8000; }
+
+  main {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 40px 24px;
+  }
+
+  .video-wrapper {
+    position: relative;
+    padding-bottom: 56.25%;
+    height: 0;
+    background: var(--purple-dark);
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.15);
+  }
+
+  .video-wrapper iframe {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    border: 0;
+  }
+
+  .video-placeholder {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: rgba(255,255,255,0.6);
+    font-family: var(--font);
+    text-align: center;
+    padding: 40px;
+    gap: 12px;
+  }
+
+  .video-placeholder__icon { font-size: 48px; opacity: 0.4; }
+  .video-placeholder__text { font-size: 16px; font-weight: 500; color: rgba(255,255,255,0.7); }
+  .video-placeholder__sub  { font-size: 13px; color: rgba(255,255,255,0.4); }
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="site-header__wordmark">TELUS MBA</div>
+  <div class="site-header__badge">Gustavson School of Business &nbsp;·&nbsp; Cohort 7 &nbsp;·&nbsp; May 2027</div>
+</header>
+
+<main>
+  <div class="video-wrapper" id="video-wrapper">
+    <div class="video-placeholder" id="video-placeholder">
+      <div class="video-placeholder__icon">&#9654;</div>
+      <div class="video-placeholder__text">Video coming soon</div>
+      <div class="video-placeholder__sub">The recorded video will appear here once uploaded.</div>
+    </div>
+  </div>
+</main>
+
+
+<script src="config.js"></script>
+<script>
+  (function() {
+    const cfg = window.videoConfig || {};
+    const url = (cfg.driveUrl || '').trim();
+    if (!url) return;
+
+    // Extract file ID from Google Drive share URLs:
+    // https://drive.google.com/file/d/FILE_ID/view?usp=sharing
+    // https://drive.google.com/open?id=FILE_ID
+    const match = url.match(/\/d\/([a-zA-Z0-9_-]+)/) || url.match(/[?&]id=([a-zA-Z0-9_-]+)/);
+    const fileId = match ? match[1] : null;
+    if (!fileId) return;
+
+    const wrapper = document.getElementById('video-wrapper');
+    document.getElementById('video-placeholder').remove();
+
+    const iframe = document.createElement('iframe');
+    iframe.src = 'https://drive.google.com/file/d/' + fileId + '/preview';
+    iframe.allow = 'autoplay';
+    iframe.allowFullscreen = true;
+    iframe.style.cssText = 'position:absolute;top:0;left:0;width:100%;height:100%;border:0;';
+    wrapper.appendChild(iframe);
+  })();
+</script>
+
+</body>
+</html>

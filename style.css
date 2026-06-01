@@ -1,0 +1,144 @@
+/* ── TELUS Brand Variables ────────────────────────────────────────── */
+:root {
+  --purple:      #4B286D;
+  --purple-dark: #3A1D55;
+  --purple-mid:  #7C53A5;
+  --green:       #66CC00;
+  --green-dark:  #2b8000;
+  --dark:        #2A2C2E;
+  --mid:         #6E6E73;
+  --light:       #F4F4F7;
+  --border:      #D8D8D8;
+  --white:       #FFFFFF;
+  --font: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: var(--font);
+  color: var(--dark);
+  background: var(--light);
+}
+
+/* ── Shared header ───────────────────────────────────────────────── */
+.site-header {
+  background: var(--purple);
+  color: var(--white);
+  padding: 0 40px;
+  height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.25);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.site-header__wordmark {
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.site-header__badge {
+  font-size: 12px;
+  font-weight: 500;
+  color: rgba(255,255,255,0.75);
+  letter-spacing: 0.3px;
+}
+
+/* ── KPI card (shared) ───────────────────────────────────────────── */
+.kpi-card {
+  background: var(--white);
+  border-radius: 8px;
+  border-left: 5px solid var(--purple);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.10);
+  padding: 20px 24px;
+  transition: box-shadow 0.15s ease-out, transform 0.15s ease-out;
+}
+
+.kpi-card:hover {
+  box-shadow: 0 6px 16px rgba(0,0,0,0.16);
+  transform: translateY(-2px);
+}
+
+.kpi-card--green { border-left-color: var(--green-dark); }
+
+.kpi-card__value {
+  font-size: 32px;
+  font-weight: 700;
+  color: var(--purple);
+  line-height: 1;
+  margin-bottom: 6px;
+}
+
+.kpi-card__label {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--mid);
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  line-height: 1.4;
+}
+
+.kpi-card__sub {
+  font-size: 11px;
+  color: var(--mid);
+  margin-top: 4px;
+}
+
+/* ── Counter animation ───────────────────────────────────────────── */
+@keyframes fadeSlideUp {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.animate-in {
+  animation: fadeSlideUp 0.45s ease-out forwards;
+}
+
+/* ── eNPS flip ───────────────────────────────────────────────────── */
+@keyframes greenPop {
+  0%   { transform: scale(1);    color: var(--purple); }
+  40%  { transform: scale(1.18); color: var(--green-dark); }
+  100% { transform: scale(1);    color: var(--green-dark); }
+}
+
+.enps-flipped {
+  animation: greenPop 0.5s ease-out forwards;
+}
+
+/* ── Progress bar ────────────────────────────────────────────────── */
+.progress-bar-track {
+  background: var(--border);
+  border-radius: 4px;
+  height: 8px;
+  overflow: hidden;
+  margin-top: 10px;
+}
+
+.progress-bar-fill {
+  height: 100%;
+  background: var(--green-dark);
+  border-radius: 4px;
+  width: 0;
+  transition: width 1.4s ease-out;
+}
+
+/* ── Footer ──────────────────────────────────────────────────────── */
+.site-footer {
+  background: var(--purple-dark);
+  color: rgba(255,255,255,0.6);
+  text-align: center;
+  padding: 18px 40px;
+  font-size: 12px;
+  letter-spacing: 0.3px;
+  margin-top: 48px;
+}
+
+.site-footer strong {
+  color: rgba(255,255,255,0.9);
+}
