@@ -5,5 +5,5 @@
 // Then commit and push this file to update GitHub Pages.
 
 window.videoConfig = {
-  driveUrl: "https://drive.google.com/file/d/1Ea6MbYKXlqe5ISkjyz1aQGWY5Wylm2Fd/view?usp=drive_link"
+  driveUrl: "https://drive.google.com/file/d/1TObwwjySHCaGhaiAWG1CD9cwcc56E8gQ/view?usp=drive_link"
 };
